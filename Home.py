@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
 
 # MUST BE FIRST COMMAND
 st.set_page_config(
@@ -8,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS (now comes after set_page_config)
+# Custom CSS
 st.markdown("""
 <style>
     .main {
@@ -29,24 +30,15 @@ st.markdown("""
         margin-bottom: 1.5rem;
         background: white;
     }
-    .nav-card {
-        transition: transform 0.3s;
-        cursor: pointer;
-        height: 100%;
+    .stButton>button {
+        width: 100%;
         padding: 1rem;
+        font-size: 1.1rem;
     }
-    .nav-card:hover {
-        transform: translateY(-5px);
-    }
-    /* Hide Streamlit's default menu and footer */
-    header { visibility: hidden; }
-    #MainMenu { visibility: hidden; }
-    footer { visibility: hidden; }
-    .stDeployButton { display:none; }
 </style>
 """, unsafe_allow_html=True)
 
-# Page Content
+# Header
 st.markdown("""
 <div class="header">
     <h1>Logistics Intelligence Platform</h1>
@@ -54,26 +46,22 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Navigation Cards using Streamlit's native navigation
+# Navigation Cards
 st.markdown("## Explore Dashboard Sections")
 cols = st.columns(4)
 nav_items = [
-    ("📊 Overview", "Key metrics and trends", "Overview"),
-    ("📈 Deep Analysis", "Detailed performance breakdown", "Analysis"),
-    ("🔍 Root Causes", "Identify bottlenecks", "Root_Cause"),
-    ("🎛️ Data Explorer", "Interactive investigation", "Interactive")
+    ("📊 Overview", "Key metrics and trends", "1_🏠_Overview"),
+    ("📈 Deep Analysis", "Detailed performance breakdown", "2_📊_Analysis"),
+    ("🔍 Root Causes", "Identify bottlenecks", "3_🔍_Root_Cause"),
+    ("🎛️ Data Explorer", "Interactive investigation", "5_🎛️_Interactive")
 ]
 
 for col, (title, desc, target) in zip(cols, nav_items):
     with col:
         with st.container(border=True, height=200):
-            st.markdown(f"""
-            <div class="nav-card">
-                <h3>{title}</h3>
-                <p>{desc}</p>
-            </div>
-            """, unsafe_allow_html=True)
-            st.page_link(f"pages/{target}.py", label="Navigate →", use_container_width=True)
+            if st.button(title):
+                switch_page(target)
+            st.caption(desc)
 
 # Footer
 st.markdown("---")
