@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 
 # MUST BE FIRST COMMAND
 st.set_page_config(
@@ -9,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS (now comes after set_page_config)
 st.markdown("""
 <style>
     .main {
@@ -23,22 +22,36 @@ st.markdown("""
         border-radius: 10px;
         margin-bottom: 2rem;
     }
-    .card {
+    .card {File "/mount/src/logistics_dashboard-app/Home.py", line 63, in <module>
+
+    switch_page(target)
+
+File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit/runtime/metrics_util.py", line 444, in wrapped_func
+
+    result = non_optional_func(*args, **kwargs)
+
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit_extras/switch_page_button/__init__.py", line 21, in switch_page
+
+    from streamlit.source_util import get_pages
         padding: 1.5rem;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         margin-bottom: 1.5rem;
         background: white;
     }
-    .stButton>button {
-        width: 100%;
-        padding: 1rem;
-        font-size: 1.1rem;
+    .nav-card {
+        transition: transform 0.3s;
+        cursor: pointer;
+    }
+    .nav-card:hover {
+        transform: translateY(-5px);
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Header
+# Page Content
 st.markdown("""
 <div class="header">
     <h1>Logistics Intelligence Platform</h1>
@@ -59,9 +72,12 @@ nav_items = [
 for col, (title, desc, target) in zip(cols, nav_items):
     with col:
         with st.container(border=True, height=200):
-            if st.button(title):
-                switch_page(target)
-            st.caption(desc)
+            st.markdown(f"""
+            <div class="nav-card" onclick="window.location.href='./{target}'">
+                <h3>{title}</h3>
+                <p>{desc}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")
@@ -69,4 +85,16 @@ st.markdown("""
 <center>
     <p>Powered by Streamlit | Logistics Analytics Suite v2.0</p>
 </center>
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True)File "/mount/src/logistics_dashboard-app/Home.py", line 63, in <module>
+
+    switch_page(target)
+
+File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit/runtime/metrics_util.py", line 444, in wrapped_func
+
+    result = non_optional_func(*args, **kwargs)
+
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit_extras/switch_page_button/__init__.py", line 21, in switch_page
+
+    from streamlit.source_util import get_pages
