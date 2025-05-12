@@ -1,4 +1,4 @@
- import streamlit as st
+import streamlit as st
 
 # MUST BE FIRST COMMAND
 st.set_page_config(
