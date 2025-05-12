@@ -22,19 +22,7 @@ st.markdown("""
         border-radius: 10px;
         margin-bottom: 2rem;
     }
-    .card {File "/mount/src/logistics_dashboard-app/Home.py", line 63, in <module>
-
-    switch_page(target)
-
-File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit/runtime/metrics_util.py", line 444, in wrapped_func
-
-    result = non_optional_func(*args, **kwargs)
-
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit_extras/switch_page_button/__init__.py", line 21, in switch_page
-
-    from streamlit.source_util import get_pages
+    .card {
         padding: 1.5rem;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -56,7 +44,7 @@ st.markdown("""
 <div class="header">
     <h1>Logistics Intelligence Platform</h1>
     <p>Data-Driven Supply Chain Optimization</p>
-</div>
+</div>al
 """, unsafe_allow_html=True)
 
 # Navigation Cards
@@ -85,16 +73,4 @@ st.markdown("""
 <center>
     <p>Powered by Streamlit | Logistics Analytics Suite v2.0</p>
 </center>
-""", unsafe_allow_html=True)File "/mount/src/logistics_dashboard-app/Home.py", line 63, in <module>
-
-    switch_page(target)
-
-File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit/runtime/metrics_util.py", line 444, in wrapped_func
-
-    result = non_optional_func(*args, **kwargs)
-
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-File "/home/adminuser/venv/lib/python3.12/site-packages/streamlit_extras/switch_page_button/__init__.py", line 21, in switch_page
-
-    from streamlit.source_util import get_pages
+""", unsafe_allow_html=True)
